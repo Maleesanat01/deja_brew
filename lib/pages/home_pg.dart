@@ -45,7 +45,7 @@ class _HomePgState extends State<HomePg> {
                 IconButton(
                   icon: const Icon(
                     Icons.menu,
-                    color: Color.fromARGB(255, 66, 33, 21),
+                    color: Color.fromARGB(255, 119, 74, 58),
                   ),
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
@@ -59,7 +59,7 @@ class _HomePgState extends State<HomePg> {
           IconButton(
             icon: const Icon(
               Icons.account_circle,
-              color: Color.fromARGB(255, 66, 33, 21),
+              color: Color.fromARGB(255, 119, 74, 58),
               size: 30,
             ),
             onPressed: () {

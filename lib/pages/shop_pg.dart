@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, sized_box_for_whitespace, depend_on_referenced_packages
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, sized_box_for_whitespace, depend_on_referenced_packages, sort_child_properties_last
 //shop_pg.dart file
 
 //no actuall add to cart function just static display
@@ -19,13 +19,52 @@ class ShopPg extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  'assets/images/offer1.jpg',
-                  height: 200,
-                  width: double.infinity,
+                Text(
+                  'Discover the latest offers for you...',
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 121, 96, 87)),
+                ),
+                SizedBox(height: 20),
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        'assets/images/offer1.jpg',
+                        height: 210,
+                        width: double.infinity,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 20,
+                      left: 10,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/OffersPage');
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 1),
+                          child: Text(
+                            'See More',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.brown.withOpacity(0.7),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
 
-                SizedBox(height: 35),
+                SizedBox(height: 20),
                 Text(
                   'Top Picks',
                   style: TextStyle(fontSize: 30),

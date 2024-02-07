@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 
 class ProfilePg extends StatelessWidget {
-  const ProfilePg({Key? key}) : super(key: key);
+  ProfilePg({Key? key}) : super(key: key);
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -12,118 +14,158 @@ class ProfilePg extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              Center(
-                child: Text(
-                  'Edit profile',
-                  style: TextStyle(
-                    fontSize: 25,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 30),
+                Center(
+                  child: Text(
+                    'Edit profile',
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 30),
-              Center(
-                child: Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        'assets/images/user_profile1.png',
-                        height: 230,
-                        width: 230,
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: IconButton(
-                        onPressed: () {
-                          //logic for image upload
-                        },
-                        icon: Icon(
-                          Icons.edit,
-                          color: Colors.brown,
+                SizedBox(height: 30),
+                Center(
+                  child: Stack(
+                    alignment: Alignment.topRight,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/images/user_profile1.png',
+                          height: 230,
+                          width: 230,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 30),
-              Text(
-                'Name',
-                style: TextStyle(fontSize: 15),
-              ),
-              SizedBox(height: 8),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: IconButton(
+                          onPressed: () {
+                            // Logic for image upload
+                          },
+                          icon: Icon(
+                            Icons.edit,
+                            color: Colors.brown,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  hintText: "Deja Brew",
                 ),
-              ),
-              SizedBox(height: 30),
-              Text(
-                'Phone',
-                style: TextStyle(fontSize: 15),
-              ),
-              SizedBox(height: 8),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  hintText: "+94 70 111 2222",
+                SizedBox(height: 30),
+                Text(
+                  'Name',
+                  style: TextStyle(fontSize: 15),
                 ),
-              ),
-              SizedBox(height: 30),
-              Text(
-                'Email',
-                style: TextStyle(fontSize: 15),
-              ),
-              SizedBox(height: 8),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  hintText: "deja.brew@gmail.com",
-                ),
-              ),
-              SizedBox(height: 30),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    //Navigator.pushNamed(context, '/LogInPage');
+                SizedBox(height: 8),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your name';
+                    }
+                    return null;
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 66, 33, 21),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.brown),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    hintText: "Deja Brew",
                   ),
-                  child: Container(
-                    width: double
-                        .infinity, // Make the button take up all available width
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: Center(
-                        child: Text(
-                          'Save',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                SizedBox(height: 30),
+                Text(
+                  'Phone',
+                  style: TextStyle(fontSize: 15),
+                ),
+                SizedBox(height: 8),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your phone number';
+                    }
+                    // Add more complex phone number validation logic here if needed
+                    return null;
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.brown),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    hintText: "+94 70 111 2222",
+                  ),
+                ),
+                SizedBox(height: 30),
+                Text(
+                  'Email',
+                  style: TextStyle(fontSize: 15),
+                ),
+                SizedBox(height: 8),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email address';
+                    }
+                    if (!value.contains('@')) {
+                      return 'Please enter a valid email address';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.brown),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    hintText: "deja.brew@gmail.com",
+                  ),
+                ),
+                SizedBox(height: 30),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        // Form is validated, proceed with saving
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 66, 33, 21),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 15, bottom: 15),
+                        child: Center(
+                          child: Text(
+                            'Save',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ], // Add this closing bracket
+              ],
+            ),
           ),
         ),
       ),

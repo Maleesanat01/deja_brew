@@ -3,6 +3,7 @@
 import 'package:deja_brew/pages/home_pg.dart';
 import 'package:deja_brew/pages/cart_pg.dart';
 import 'package:deja_brew/pages/first_pg.dart';
+import 'package:deja_brew/pages/offers_pg.dart';
 import 'package:deja_brew/pages/profile_pg.dart';
 import 'package:deja_brew/pages/settings_pg.dart';
 import 'package:deja_brew/pages/shop_pg.dart';
@@ -23,7 +24,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const FirstPg(),
       //navigatorKey: navigatorKey,
-      // theme: ThemeData(primaryColor: Colors.grey),
       initialRoute: '/',
       routes: {
         '/LogInPage': (context) => LoginPg(),
@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/HomePage': (context) => HomePg(),
         '/ShopPage': (context) => ShopPg(),
         '/CartPage': (context) => CartPg(),
+        '/OffersPage': (context) => OffersPg(),
         '/ProfilePage': (context) => ProfilePg(),
         '/SettingsPage': (context) => SettingsPg(),
         '/FirstPage': (context) => FirstPg(),
