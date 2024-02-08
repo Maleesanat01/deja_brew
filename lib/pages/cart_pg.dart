@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/material.dart';
 import 'package:deja_brew/models/item.dart';
 import 'package:deja_brew/pages/cart_item_card.dart';
-import 'package:flutter/material.dart';
 
 class CartPg extends StatelessWidget {
   const CartPg({Key? key});
@@ -25,8 +25,7 @@ class CartPg extends StatelessWidget {
               Container(
                 height: MediaQuery.of(context).size.height,
                 child: ListView.builder(
-                  physics:
-                      NeverScrollableScrollPhysics(), //disable scroll for list view so that whole page is scrollable through the single child scroll view
+                  physics: NeverScrollableScrollPhysics(),
                   itemCount: 1,
                   itemBuilder: (context, index) {
                     Item details = getDefaultUserCart(index);
@@ -41,6 +40,26 @@ class CartPg extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            // Acheckout logic
+          },
+          label: Row(
+            children: [
+              Text(
+                'Checkout',
+                style: TextStyle(fontSize: 15),
+              ),
+              SizedBox(width: 5),
+              Icon(Icons.arrow_forward_ios),
+            ],
+          ),
+          backgroundColor: Color.fromARGB(255, 90, 49, 32),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

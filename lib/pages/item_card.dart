@@ -45,21 +45,24 @@ class ItemCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 12, top: 8),
             child: Text(
-              item.price,
+              item.description,
               style: TextStyle(fontSize: 18, color: Colors.black),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 12, top: 8),
             child: Text(
-              item.description,
-              style: TextStyle(fontSize: 17, color: Colors.black),
+              '\$${item.price.toString()}', //to put $ sign with price
+              style: TextStyle(fontSize: 24, color: Colors.black),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 12, top: 22),
             child: Container(
-              decoration: BoxDecoration(color: Color.fromARGB(255, 66, 33, 21)),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 66, 33, 21),
+                borderRadius: BorderRadius.circular(5),
+              ),
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 0, horizontal: 2.0),

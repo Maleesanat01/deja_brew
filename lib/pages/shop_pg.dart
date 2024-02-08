@@ -24,7 +24,7 @@ class ShopPg extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 121, 96, 87)),
+                      color: Color.fromARGB(255, 109, 75, 62)),
                 ),
                 SizedBox(height: 20),
                 Stack(
@@ -206,7 +206,7 @@ Item getTopPicksDetails(int index) {
         name: 'Iced Coffee',
         price: '3.99',
         imagePath: 'assets/images/iced_coffee.jpg',
-        description: 'Chilled Coffee Refreshment',
+        description: 'Chilled Refreshment',
       );
     case 2:
       return Item(
@@ -295,7 +295,7 @@ Item getColdBevDetails(int index) {
         name: 'Iced Coffee',
         price: '3.99',
         imagePath: 'assets/images/iced_coffee.jpg',
-        description: 'Chilled Coffee Refreshment',
+        description: 'Chilled Refreshment',
       );
     case 1:
       return Item(
@@ -309,7 +309,7 @@ Item getColdBevDetails(int index) {
         name: 'Frappuccino',
         price: '5.99',
         imagePath: 'assets/images/frappuccino.jpg',
-        description: 'Frosty Blended Indulgence',
+        description: 'Frosty Indulgence',
       );
     case 3:
       return Item(
@@ -364,7 +364,7 @@ Item getDessertDetails(int index) {
         name: 'Red Velvet',
         price: '6.99',
         imagePath: 'assets/images/red_velvet.jpg',
-        description: 'Velvet-textured Sweetness',
+        description: 'Velvet Sweetness',
       );
     case 5:
       return Item(
