@@ -34,7 +34,7 @@ class CartItemCard extends StatelessWidget {
                 Text(item.name, style: TextStyle(fontSize: 16)),
                 SizedBox(height: 5),
                 Text(
-                  item.price,
+                  '\$${item.price.toString()}', //to put $ sign with price
                   style: TextStyle(fontSize: 16),
                   textAlign: TextAlign.start,
                 ),
