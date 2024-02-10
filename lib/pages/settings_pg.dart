@@ -111,7 +111,7 @@ class _SettingsPgState extends State<SettingsPg> {
               Center(
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/FirstPage');
+                    Navigator.pushReplacementNamed(context, '/LogInPage');
                   },
                   child: Text(
                     'Log Out',

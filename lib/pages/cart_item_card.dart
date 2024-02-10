@@ -1,96 +1,103 @@
-// ignore_for_file: deprecated_member_use, prefer_const_constructors, prefer_const_constructors_in_immutables
-import 'package:deja_brew/models/item.dart';
+// ignore_for_file: must_be_immutable, prefer_const_constructors, sized_box_for_whitespace
+//cart_item_card.dart file
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/cart.dart';
+import '../models/item.dart';
 
-class CartItemCard extends StatelessWidget {
+class CartItemCard extends StatefulWidget {
   final Item item;
 
-  CartItemCard({Key? key, required this.item}) : super(key: key);
+  const CartItemCard({Key? key, required this.item}) : super(key: key);
 
   @override
+  State<CartItemCard> createState() => _CartItemCardState();
+}
+
+class _CartItemCardState extends State<CartItemCard> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 140,
-      //width: 280,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        color: Color.fromARGB(255, 248, 241, 239),
-      ),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(item.imagePath, height: 130),
-            ),
+    return Padding(
+      padding: EdgeInsets.only(bottom: 10),
+      child: Material(
+        elevation: 4,
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 248, 241, 239),
+            borderRadius: BorderRadius.circular(8),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0, left: 20),
-            child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start, // Align text to the left
+          child: ListTile(
+            leading: Container(
+              width: 70,
+              height: 300,
+              child: Image.asset(
+                widget.item.imagePath,
+                fit: BoxFit.cover, // Ensure the image covers the container
+              ),
+            ),
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(item.name, style: TextStyle(fontSize: 16)),
-                SizedBox(height: 5),
                 Text(
-                  '\$${item.price.toString()}', //to put $ sign with price
-                  style: TextStyle(fontSize: 16),
-                  textAlign: TextAlign.start,
-                ),
-                SizedBox(height: 5),
-                Text(item.selectedSize, style: TextStyle(fontSize: 16)),
-                SizedBox(height: 5),
-                Padding(
-                  padding: const EdgeInsets.only(left: 0),
-                  child: StatefulBuilder(
-                    builder: (context, setState) {
-                      return Row(
-                        children: [
-                          _buildQuantityButton('-', () {
-                            // Decrement logic
-                            if (item.selectedQuantity > 0) {
-                              setState(() {
-                                item.selectedQuantity--;
-                              });
-                            }
-                          }),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(item.selectedQuantity.toString(),
-                                style: TextStyle(fontSize: 18)),
-                          ),
-                          _buildQuantityButton('+', () {
-                            // Increment logic
-                            setState(() {
-                              item.selectedQuantity++;
-                            });
-                          }),
-                        ],
-                      );
-                    },
+                  widget.item.name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.brown[900],
                   ),
+                ),
+                SizedBox(height: 6),
+                Text(
+                  'Size: ${widget.item.selectedSize}',
+                  style: TextStyle(color: Colors.brown[900]),
+                ),
+                SizedBox(height: 6),
+              ],
+            ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '\$${widget.item.price}',
+                  style: TextStyle(
+                    color: Colors.brown[900],
+                  ),
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.remove),
+                      onPressed: () {
+                        setState(() {
+                          widget.item.selectedQuantity--;
+                        });
+                      },
+                    ),
+                    Text(
+                      '${widget.item.selectedQuantity}',
+                      style: TextStyle(fontSize: 16, color: Colors.brown[900]),
+                    ),
+                    IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed: () {
+                          setState(() {
+                            widget.item.selectedQuantity++;
+                          });
+                        }),
+                  ],
                 ),
               ],
             ),
+            trailing: IconButton(
+              icon: Icon(Icons.delete),
+              color: Colors.brown[900],
+              onPressed: () {
+                Provider.of<Cart>(context, listen: false)
+                    .removeItemFromCart(widget.item);
+              },
+            ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildQuantityButton(String label, Function onPressed) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Color.fromARGB(255, 236, 224, 220),
-      ),
-      onPressed: () {
-        onPressed();
-      },
-      child: Text(
-        label,
-        style: TextStyle(color: Color.fromARGB(255, 66, 33, 21)),
+        ),
       ),
     );
   }

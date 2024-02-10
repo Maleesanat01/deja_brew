@@ -1,8 +1,9 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors, sized_box_for_whitespace, deprecated_member_use
-
-import 'package:deja_brew/models/cart.dart';
-import 'package:deja_brew/models/item.dart';
+//item_card.dart
+import '../models/cart.dart';
+import '../models/item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ItemCard extends StatelessWidget {
   Item item;
@@ -141,7 +142,7 @@ class ItemCard extends StatelessWidget {
                             }
                           });
                         }),
-                        //display selecte3ed quantity between increment and decrement button
+                        //display selected quantity between increment and decrement button
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text(selectedQuantity.toString(),
@@ -175,28 +176,13 @@ class ItemCard extends StatelessWidget {
                     backgroundColor: Color.fromARGB(255, 66, 33, 21),
                   ),
                   onPressed: () {
-                    //selected size and quantity stored as variable in selectedDetails variable from item class
-                    //String selectedDetails =
-                    // '$selectedSize, Quantity: $selectedQuantity';
-
-                    // Add item to cart with selected details
-                    Item selectedItem = Item(
-                      name: item.name,
-                      price: item.price,
-                      imagePath: item.imagePath,
-                      description: item.description,
-                      //selectedQuantity: selectedQuantity,
-                      //selectedSize: selectedSize,
-                      //selectedDetails:
-                      //selectedDetails, //add size and quantity selected
+                    Provider.of<Cart>(context, listen: false).addItemToCart(
+                      item,
+                      selectedSize,
+                      selectedQuantity,
                     );
-
-                    // Add the modified item to the user's cart
-                    Cart().addItemToCart(selectedItem);
-
                     // Show success message
                     _showSuccessMessage(context);
-
                     Navigator.pop(context); // Close the dialog
                   },
                   child: Text('Add'),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class RegisterPg extends StatelessWidget {
   RegisterPg({Key? key}) : super(key: key);
 
-  Color myColor = Color.fromARGB(255, 247, 247, 247);
+  Color myColor = Color.fromARGB(255, 255, 254, 254);
 
   final _formKey = GlobalKey<FormState>();
 

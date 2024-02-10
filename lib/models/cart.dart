@@ -1,6 +1,7 @@
-import 'package:deja_brew/models/item.dart';
+import '../models/item.dart';
 import 'package:flutter/widgets.dart';
 
+//cart class
 class Cart extends ChangeNotifier {
   //instance variables for lists
   List<Item> itemShop;
@@ -191,7 +192,7 @@ class Cart extends ChangeNotifier {
             name: 'Frappuccino',
             price: '5.99',
             imagePath: 'assets/images/frappuccino.jpg',
-            description: 'Frosty Blended Indulgence',
+            description: 'Frosty Indulgence',
           ),
           Item(
             name: 'Cold Brew',
@@ -229,7 +230,7 @@ class Cart extends ChangeNotifier {
             name: 'Red Velvet',
             price: '6.99',
             imagePath: 'assets/images/red_velvet.jpg',
-            description: 'Velvet-textured Sweetness',
+            description: 'Rich indulgence',
           ),
           Item(
             name: 'Tiramisu',
@@ -239,6 +240,8 @@ class Cart extends ChangeNotifier {
           ),
         ],
         userCart = [];
+
+  //get items => null;
 
 //Methods to get categorized items
 //function to get top picks
@@ -272,7 +275,10 @@ class Cart extends ChangeNotifier {
   }
 
   //add items to cart
-  void addItemToCart(Item item) {
+  void addItemToCart(Item item, String selectedSize, int selectedQuantity) {
+    // Update selected size and quantity of the item
+    item.selectedSize = selectedSize;
+    item.selectedQuantity = selectedQuantity;
     userCart.add(item);
     notifyListeners();
   }
@@ -284,10 +290,12 @@ class Cart extends ChangeNotifier {
   }
 }
 
-/*NO CART PAGE DISPLAY YET
-import 'package:cafe_app/models/item.dart';
+
+/*
+import '../models/item.dart';
 import 'package:flutter/widgets.dart';
 
+//cart class
 class Cart extends ChangeNotifier {
   //instance variables for lists
   List<Item> itemShop;
@@ -526,6 +534,8 @@ class Cart extends ChangeNotifier {
           ),
         ],
         userCart = [];
+
+  //get items => null;
 
 //Methods to get categorized items
 //function to get top picks
