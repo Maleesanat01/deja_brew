@@ -41,7 +41,8 @@ class CartPg extends StatelessWidget {
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: cart.getUserCart().length,
                         itemBuilder: (context, index) {
-                          Item individualItem = cart.getUserCart()[index];
+                          Item individualItem = cart.getUserCart()[
+                              index]; //display each item in userCart list index, by index using CartItemCard
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 16.0),
                             child: CartItemCard(item: individualItem),

@@ -19,6 +19,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  //MyApp represents the entire app
   const MyApp({Key? key}) : super(key: key);
 
   @override

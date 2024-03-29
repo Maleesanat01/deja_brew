@@ -201,16 +201,18 @@ class ItemCard extends StatelessWidget {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: size == selectedSize
-              ? Color.fromARGB(255, 66, 33, 21)
-              : Color.fromARGB(255, 236, 224, 220),
+              ? Color.fromARGB(
+                  255, 66, 33, 21) //if selected background to be brown
+              : Color.fromARGB(255, 236, 224, 220), //else white
         ),
         onPressed: onPressed as void Function(),
         child: Text(
           size,
           style: TextStyle(
             color: size == selectedSize
-                ? Color.fromARGB(255, 236, 224, 220)
-                : Color.fromARGB(255, 66, 33, 21),
+                ? Color.fromARGB(
+                    255, 236, 224, 220) //if selected text color to be white
+                : Color.fromARGB(255, 66, 33, 21), //else brown
           ),
         ));
   }

@@ -15,7 +15,7 @@ class ProfilePg extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
-            key: _formKey,
+            key: _formKey, //uniquely identifies form
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

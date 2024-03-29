@@ -108,6 +108,7 @@ class _HomePgState extends State<HomePg> {
           tabBackgroundColor: Color.fromARGB(255, 233, 217, 210),
           gap: 8,
           onTabChange: (index) {
+            //take the index of the page that user is currently on and pass it as parameter and set that index to selectindex
             setState(() {
               _selectedIndex = index;
             });
@@ -237,6 +238,7 @@ class _HomePgState extends State<HomePg> {
     );
   }
 
+//widget to display badge on car ticon to indicate no.of.items in cart
   Widget _buildCartIcon(BuildContext context, bool isSelected) {
     int itemCount = Provider.of<Cart>(context).getUserCart().length;
     return Stack(
