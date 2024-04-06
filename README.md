@@ -1,6 +1,8 @@
-<p align="Left">
-<h1>Deja-Brew ☕️</h1>
+<p align="center">
+<img src="https://github.com/Maleesanat01/deja_brew/blob/main/deja_logo.png" style="width: 250px; height: auto; float: right; margin-left: 20px;">
+
 </p>
+
 
 ## Description
 
@@ -16,6 +18,11 @@ Key Features:
   <li>Add to cart</li>
   <li>Delete from cart</li>
 </ul>
+
+<div style="display: flex; justify-content: right;">
+    <img src="https://github.com/Maleesanat01/deja_brew/blob/main/home.jpg"  style="margin-right: 10px;">
+    <img src="https://github.com/Maleesanat01/deja_brew/blob/main/cartt.jpg"  style="margin-right: 10px;">
+</div>
 
 ## 💻 Tech Stack:
 
